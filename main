@@ -1,0 +1,47 @@
+Prometheus и node exporter
+1. Обновляем пакеты
+apt update && apt upgrade -y
+
+2. Проверяем пакеты
+sudo apt search prometheus
+
+3. Установка prometheus и node exporter
+sudo apt install prometheus
+
+
+Grafana
+4. Скачиваем и добавляем ключ
+wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+
+5. Добавляем репозиторий
+sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
+
+6. Обновляем пакеты
+sudo apt update
+
+7. Установка Grafana
+sudo apt install grafana
+
+8. Запускаем сервис
+sudo systemctl start grafana-server
+
+9. Проверяем статус
+sudo systemctl status grafana-server
+
+10. Добавляем в автозагрузку
+sudo systemctl enable grafana-server
+
+Настройка Grafana
+- Data Sources - Prometheus - http://localhost:9090 - Save & test
+- Import https://grafana.com/grafana/dashboards/15172-node-exporter-for-prometheus-dashboard-based-on-11074/
+
+
+Добавление сервера для мониторинга
+11. добавление ip в файл конфигурации
+nano /etc/prometheus/prometheus.yml
+
+
+
+Ссылки
+https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-grafana-on-ubuntu-20-04-ru
+https://losst.ru/ustanovka-i-nastrojka-prometheus
